@@ -25,7 +25,7 @@ export function saveTree(tree) {
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
       ...tree,
-      authorId: parseInt(tree.authorId, 10)
+      ownerId: parseInt(tree.ownerId, 10)
     })
   })
     .then(handleResponse)
