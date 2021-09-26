@@ -55,10 +55,10 @@ function TreeForm(props) {
                     className="form-control"
                 >
                     <option value="" />
-                    <option value="1">Healty</option>
-                    <option value="2">Aging</option>
-                    <option value="3">Injured</option>
-                    <option value="4">Deseased</option>
+                    <option value="Healty">Healty</option>
+                    <option value="Aging">Aging</option>
+                    <option value="Injured">Injured</option>
+                    <option value="Deseased">Deseased</option>
                 </select>
                 </div>
                 {props.errors.condition && (

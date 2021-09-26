@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TreeForm from "./TreeForm";
 import * as treeApi from "../api/treeApi";
 import { toast } from "react-toastify";
@@ -13,6 +13,13 @@ const ManageTreePage = props => {
        family: "",
        condition: ""
     });
+
+    useEffect(() => {
+        const slug = props.match.params.slug;
+        if (slug) {
+            treeApi.getTreeBySlug(slug).then(_tree => setTree(_tree));
+        }
+    }, [props.match.params.slug]);
 
     function handleChange({ target }) {
         setTree({...tree, [target.name]: target.value});
