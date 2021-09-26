@@ -1,16 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { getTrees } from "../api/treeApi";
 
-class TreesPage extends React.Component {
-    state = {
-        trees: []
-    };
+function TreesPage() {
+    const [trees, setTrees] = useState([]);
 
-    componentDidMount() {
-        getTrees().then(trees => this.setState({trees: trees}));
-    }
+    useEffect(() => {
+        getTrees().then(_trees => setTrees(_trees));
+    }, []);
 
-    renderRow(tree) {
+    function renderRow(tree) {
         return (
             <tr key={tree.id}>
                 <td>{tree.species}</td>
@@ -18,27 +16,25 @@ class TreesPage extends React.Component {
                 <td>{tree.family}</td>
             </tr>
         );
-    }
+    };
 
-    render() {
-        return (
-            <>
-                <h2>Trees</h2>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Species</th>
-                            <th>Owner ID</th>
-                            <th>Family</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.trees.map(this.renderRow)}
-                    </tbody>
-                </table>
-            </>
-        );
-    }
+    return (
+        <>
+            <h2>Trees</h2>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>Species</th>
+                        <th>Owner ID</th>
+                        <th>Family</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {trees.map(renderRow)}
+                </tbody>
+            </table>
+        </>
+    );
 }
 
 export default TreesPage;
