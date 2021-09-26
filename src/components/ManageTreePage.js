@@ -4,6 +4,7 @@ import * as treeApi from "../api/treeApi";
 import { toast } from "react-toastify";
 
 const ManageTreePage = props => {
+    const [errors, setErrors] = useState({});
     const [tree, setTree] = useState({
        id: null,
        slug: "",
@@ -17,8 +18,24 @@ const ManageTreePage = props => {
         setTree({...tree, [target.name]: target.value});
     }
 
+    function formIsValid() {
+        const _errors = {};
+
+        if (!tree.species) _errors.species = "Species is required";
+        if (!tree.ownerId) _errors.ownerId = "Owner ID is required";
+        if (!tree.family) _errors.family = "Family is required";
+        if (!tree.condition) _errors.condition = "Condition is required";
+
+        setErrors(_errors);
+
+        return Object.keys(_errors).length === 0;
+    }
+
     function handleSubmit(event) {
         event.preventDefault();
+
+        if (!formIsValid()) return;
+
         treeApi.saveTree(tree).then(() => {
             props.history.push("/trees");
             toast.success("Tree saved");
@@ -28,7 +45,12 @@ const ManageTreePage = props => {
     return(
         <>
             <h2>Manage Tree</h2>
-            <TreeForm tree={tree} onChange={handleChange} onSubmit={handleSubmit}/>
+            <TreeForm 
+                errors={errors} 
+                tree={tree} 
+                onChange={handleChange} 
+                onSubmit={handleSubmit}
+            />
         </>
     );
 };

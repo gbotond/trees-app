@@ -1,5 +1,6 @@
 import React from "react";
 import TextInput from "./common/TextInput";
+import PropTypes from "prop-types";
 
 function TreeForm(props) {
     return (
@@ -10,6 +11,7 @@ function TreeForm(props) {
                 name="species"
                 onChange={props.onChange}
                 value={props.tree.species}
+                error={props.errors.species}
             />
 
             <div className="form-group">
@@ -28,6 +30,9 @@ function TreeForm(props) {
                     <option value="3">III. District</option>
                 </select>
                 </div>
+                {props.errors.ownerId && (
+                    <div className="alert alert-danger">{props.errors.ownerId}</div>
+                )}
             </div>
 
             <TextInput
@@ -36,6 +41,7 @@ function TreeForm(props) {
                 name="family"
                 value={props.tree.family}
                 onChange={props.onChange}
+                error={props.errors.species}
             />
 
             <div className="form-group">
@@ -55,11 +61,21 @@ function TreeForm(props) {
                     <option value="4">Deseased</option>
                 </select>
                 </div>
+                {props.errors.condition && (
+                    <div className="alert alert-danger">{props.errors.condition}</div>
+                )}
             </div>
 
             <input type="submit" value="Save" className="btn btn-primary" />
         </form>
     );
 }
+
+TreeForm.propTypes = {
+    tree: PropTypes.object.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
+};
 
 export default TreeForm;
