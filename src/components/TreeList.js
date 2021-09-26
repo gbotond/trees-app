@@ -9,7 +9,7 @@ function TreeList(props) {
                 <td>
                     <Link to={"/tree/" + tree.slug}>{tree.species}</Link>
                 </td>
-                <td>{tree.ownerId}</td>
+                <td>{tree.owner}</td>
                 <td>{tree.family}</td>
                 <td>{tree.condition}</td>
             </tr>
@@ -22,7 +22,7 @@ function TreeList(props) {
                 <thead>
                     <tr>
                         <th>Species</th>
-                        <th>Owner ID</th>
+                        <th>Owner</th>
                         <th>Family</th>
                         <th>Condition</th>
                     </tr>
