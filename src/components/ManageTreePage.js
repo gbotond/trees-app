@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TreeForm from "./TreeForm";
 import * as treeApi from "../api/treeApi";
+import { toast } from "react-toastify";
 
 const ManageTreePage = props => {
     const [tree, setTree] = useState({
@@ -20,6 +21,7 @@ const ManageTreePage = props => {
         event.preventDefault();
         treeApi.saveTree(tree).then(() => {
             props.history.push("/trees");
+            toast.success("Tree saved");
         });
     }
 

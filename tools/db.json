@@ -84,10 +84,10 @@
       "id": 11,
       "slug": "ertert",
       "species": "ertert",
-      "ownerId": 1,
-      "family": "tertert",
-      "condition": "2",
-      "createdAt": 1632687013614
+      "ownerId": 2,
+      "family": "sdfsd",
+      "condition": "3",
+      "createdAt": 1632687361358
     }
   ],
   "owners": [
