@@ -15,6 +15,7 @@ function App() {
                 <Route path="/" exact component={HomePage} />
                 <Route path="/trees" component={TreesPage} />
                 <Route path="/tree/:slug" component={ManageTreePage} />
+                <Route path="/tree/" component={ManageTreePage} />
                 <Route path="/about" component={AboutPage} />
                 <Redirect from="/about-page" to="about" />
                 <Route component={NotFoundPage} />

@@ -11,6 +11,7 @@ function TreeList(props) {
                 </td>
                 <td>{tree.ownerId}</td>
                 <td>{tree.family}</td>
+                <td>{tree.condition}</td>
             </tr>
         );
     };
@@ -23,6 +24,7 @@ function TreeList(props) {
                         <th>Species</th>
                         <th>Owner ID</th>
                         <th>Family</th>
+                        <th>Condition</th>
                     </tr>
                 </thead>
                 <tbody>
