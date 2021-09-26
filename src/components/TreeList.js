@@ -1,11 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function TreeList(props) {
     function renderRow(tree) {
         return (
             <tr key={tree.id}>
-                <td>{tree.species}</td>
+                <td>
+                    <Link to={"/tree/" + tree.slug}>{tree.species}</Link>
+                </td>
                 <td>{tree.ownerId}</td>
                 <td>{tree.family}</td>
             </tr>
