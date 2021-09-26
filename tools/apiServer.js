@@ -28,7 +28,7 @@ server.post("/trees/", function(req, res, next) {
   if (error) {
     res.status(400).send(error);
   } else {
-    req.body.slug = createSlug(req.body.title);
+    req.body.slug = createSlug(req.body.species);
     next();
   }
 });
@@ -49,7 +49,8 @@ function createSlug(value) {
 
 function validateTree(tree) {
   if (!tree.species) return "Species is required.";
-  if (!tree.owner) return "Owner is required.";
+  if (!tree.ownerId) return "Owner is required.";
   if (!tree.family) return "Family is required.";
+  if (!tree.condition) return "Condition is required.";
   return "";
 }
