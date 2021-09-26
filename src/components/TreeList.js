@@ -14,7 +14,6 @@ function TreeList(props) {
 
     return (
         <>
-            <h2>Trees</h2>
             <table className="table">
                 <thead>
                     <tr>
