@@ -6,7 +6,7 @@ class AboutPage extends React.Component {
         return (
             <>
                 <h2>About</h2>
-                <p>This app uses React.</p>
+                <p>My first React application for showcasing basic frontend tasks using this technology.</p>
             </>
         );
     }
